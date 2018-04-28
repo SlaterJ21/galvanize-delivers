@@ -35,7 +35,7 @@
                 <p class="card-text burPrice">$8.99</p>
                 </div>
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary addBur">ADD TO ORDER</button>
+                  <button type="submit" class="btn btn-primary addBur add">ADD TO ORDER</button>
                 </div>
             </div>
 
@@ -46,7 +46,7 @@
                 <p class="card-text aruPrice">$11.99</p>
               </div>
               <div class="card-footer">
-                <button type="submit" class="btn btn-primary addAr">ADD TO ORDER</button>
+                <button type="submit" class="btn btn-primary addAr add">ADD TO ORDER</button>
               </div>
             </div>
 
@@ -61,7 +61,7 @@
               <p class="card-text ribPrice">$14.99</p>
             </div>
             <div class="card-footer">
-              <button type="submit" class="btn btn-primary addRib">ADD TO ORDER</button>
+              <button type="submit" class="btn btn-primary addRib add">ADD TO ORDER</button>
             </div>
           </div>
 
@@ -72,7 +72,7 @@
               <p class="card-text icePrice">$7.99</p>
             </div>
             <div class="card-footer">
-              <button type="submit" class="btn btn-primary addIce">ADD TO ORDER</button>
+              <button type="submit" class="btn btn-primary addIce add">ADD TO ORDER</button>
             </div>
           </div>
 
@@ -165,51 +165,77 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script>
       $(function(){
+        //
+        // function arMagic(event){
+        //   $('.orders').append('<tr><td class = "aruDataName"></td><td class = "aruDataPrice"></td></tr>');
+        //   $('.aruDataName').text($('.arugala').html());
+        //   $('.aruDataPrice').text($('.aruPrice').html());
+        //   $('.sub').text(((parseFloat (($('.sub').html()).slice(0, ($('.sub').html()).length))) + (parseFloat (($('.aruPrice').html()).slice(1, ($('.aruPrice').html()).length)))).toFixed(2))
+        //   $('.tax').text(($('.sub').text() * 0.029).toFixed(2))
+        //   $('.total').text((parseFloat ($('.sub').html()) + parseFloat ($('.tax').html())).toFixed(2))
+        // }
+        //
+        // $('.addAr').click(arMagic)
+        //
+        // function burMagic(event){
+        //   $('.orders').append('<tr><td class = "burDataName"></td><td class = "burDataPrice"></td></tr>');
+        //   $('.burDataName').text($('.bur').html());
+        //   $('.burDataPrice').text($('.burPrice').html());
+        //   $('.sub').text(((parseFloat (($('.sub').html()).slice(0, ($('.sub').html()).length))) + (parseFloat (($('.burPrice').html()).slice(1, ($('.burPrice').html()).length)))).toFixed(2))
+        //   $('.tax').text(($('.sub').text() * 0.029).toFixed(2))
+        //   $('.total').text((parseFloat ($('.sub').html()) + parseFloat ($('.tax').html())).toFixed(2))
+        // }
+        //
+        // $('.addBur').click(burMagic)
+        //
+        // function ribMagic(event){
+        //   $('.orders').append('<tr><td class = "ribDataName"></td><td class = "ribDataPrice"></td></tr>');
+        //   $('.ribDataName').text($('.rib').html());
+        //   $('.ribDataPrice').text($('.ribPrice').html());
+        //   $('.sub').text(((parseFloat (($('.sub').html()).slice(0, ($('.sub').html()).length))) + (parseFloat (($('.ribPrice').html()).slice(1, ($('.ribPrice').html()).length)))).toFixed(2))
+        //   $('.tax').text(($('.sub').text() * 0.029).toFixed(2))
+        //   $('.total').text((parseFloat ($('.sub').html()) + parseFloat ($('.tax').html())).toFixed(2))
+        // }
+        //
+        // $('.addRib').click(ribMagic)
+        //
+        // function iceMagic(event){
+        //   $('.orders').append('<tr><td class = "iceDataName"></td><td class = "iceDataPrice"></td></tr>');
+        //   $('.iceDataName').text($('.ice').html());
+        //   $('.iceDataPrice').text($('.icePrice').html());
+        //   $('.sub').text(((parseFloat (($('.sub').html()).slice(0, ($('.sub').html()).length))) + (parseFloat (($('.icePrice').html()).slice(1, ($('.icePrice').html()).length)))).toFixed(2))
+        //   $('.tax').text(($('.sub').text() * 0.029).toFixed(2))
+        //   $('.total').text((parseFloat ($('.sub').html()) + parseFloat ($('.tax').html())).toFixed(2))
+        // }
+        //
+        // $('.addIce').click(iceMagic)
 
-        function arMagic(event){
-          $('.orders').append('<tr><td class = "aruDataName"></td><td class = "aruDataPrice"></td></tr>');
-          $('.aruDataName').text($('.arugala').html());
-          $('.aruDataPrice').text($('.aruPrice').html());
-          $('.sub').text(((parseFloat (($('.sub').html()).slice(0, ($('.sub').html()).length))) + (parseFloat (($('.aruPrice').html()).slice(1, ($('.aruPrice').html()).length)))).toFixed(2))
+        let itemCount = 0;
+
+        function magic(event){
+          let name = '';
+          let price = '';
+          if ($(event.target).hasClass('addBur')){
+            name = $('.bur').text()
+            price = $('.burPrice').text()
+          } else if ($(event.target).hasClass('addAr')){
+                name = $('.arugala').text()
+                price = $('.aruPrice').text()
+          } else if ($(event.target).hasClass('addRib')){
+                name = $('.rib').text()
+                price = $('.ribPrice').text()
+          } else if ($(event.target).hasClass('addIce')){
+                name = $('.ice').text()
+                price = $('.icePrice').text()
+          }
+          console.log(name, price)
+          $('.orders').append('<tr><td>' + name + '</td><td>' + price + '</td></tr>');
+          $('.sub').text(((parseFloat (($('.sub').html()).slice(0, ($('.sub').html()).length))) + (parseFloat ((price).slice(1, (price).length)))).toFixed(2))
           $('.tax').text(($('.sub').text() * 0.029).toFixed(2))
           $('.total').text((parseFloat ($('.sub').html()) + parseFloat ($('.tax').html())).toFixed(2))
         }
 
-        $('.addAr').click(arMagic)
-
-        function burMagic(event){
-          $('.orders').append('<tr><td class = "burDataName"></td><td class = "burDataPrice"></td></tr>');
-          $('.burDataName').text($('.bur').html());
-          $('.burDataPrice').text($('.burPrice').html());
-          $('.sub').text(((parseFloat (($('.sub').html()).slice(0, ($('.sub').html()).length))) + (parseFloat (($('.burPrice').html()).slice(1, ($('.burPrice').html()).length)))).toFixed(2))
-          $('.tax').text(($('.sub').text() * 0.029).toFixed(2))
-          $('.total').text((parseFloat ($('.sub').html()) + parseFloat ($('.tax').html())).toFixed(2))
-        }
-
-        $('.addBur').click(burMagic)
-
-        function ribMagic(event){
-          $('.orders').append('<tr><td class = "ribDataName"></td><td class = "ribDataPrice"></td></tr>');
-          $('.ribDataName').text($('.rib').html());
-          $('.ribDataPrice').text($('.ribPrice').html());
-          $('.sub').text(((parseFloat (($('.sub').html()).slice(0, ($('.sub').html()).length))) + (parseFloat (($('.ribPrice').html()).slice(1, ($('.ribPrice').html()).length)))).toFixed(2))
-          $('.tax').text(($('.sub').text() * 0.029).toFixed(2))
-          $('.total').text((parseFloat ($('.sub').html()) + parseFloat ($('.tax').html())).toFixed(2))
-        }
-
-        $('.addRib').click(ribMagic)
-
-        function iceMagic(event){
-          $('.orders').append('<tr><td class = "iceDataName"></td><td class = "iceDataPrice"></td></tr>');
-          $('.iceDataName').text($('.ice').html());
-          $('.iceDataPrice').text($('.icePrice').html());
-          $('.sub').text(((parseFloat (($('.sub').html()).slice(0, ($('.sub').html()).length))) + (parseFloat (($('.icePrice').html()).slice(1, ($('.icePrice').html()).length)))).toFixed(2))
-          $('.tax').text(($('.sub').text() * 0.029).toFixed(2))
-          $('.total').text((parseFloat ($('.sub').html()) + parseFloat ($('.tax').html())).toFixed(2))
-        }
-
-        $('.addIce').click(iceMagic)
-
+        $('.add').click(magic)
 
 
       })
