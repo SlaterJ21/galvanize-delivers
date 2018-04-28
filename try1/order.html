@@ -68,7 +68,7 @@
           <div class="card">
             <img class="card-img-top" src="../img/ice_cream.jpg" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title ice">Ice Cream Biscut</h5>
+              <h5 class="card-title ice">Ice Cream Biscuit</h5>
               <p class="card-text icePrice">$7.99</p>
             </div>
             <div class="card-footer">
@@ -228,11 +228,12 @@
                 name = $('.ice').text()
                 price = $('.icePrice').text()
           }
-          console.log(name, price)
+          let sub = $('.sub').text()
           $('.orders').append('<tr><td>' + name + '</td><td>' + price + '</td></tr>');
-          $('.sub').text(((parseFloat (($('.sub').html()).slice(0, ($('.sub').html()).length))) + (parseFloat ((price).slice(1, (price).length)))).toFixed(2))
+          $('.sub').text((parseFloat (sub.slice(0, sub.length)) + (parseFloat (price.slice(1, price.length)))).toFixed(2))
+          sub = $('.sub').text()
           $('.tax').text(($('.sub').text() * 0.029).toFixed(2))
-          $('.total').text((parseFloat ($('.sub').html()) + parseFloat ($('.tax').html())).toFixed(2))
+          $('.total').text((parseFloat (sub) + parseFloat ($('.tax').html())).toFixed(2))
         }
 
         $('.add').click(magic)
