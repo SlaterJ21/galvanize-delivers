@@ -1,4 +1,27 @@
 .jumbotron {
+  height: 85vh;
   background-image: url('../img/hero.jpg');
   background-size: cover;
+  background-position: right;
+}
+
+.vertical-center {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+.center {
+  margin: auto;
+}
+
+.info {
+  margin-top: 8vh;
+  min-height: 35vh;
+}
+
+.foot {
+  margin-top: 8vh;
+  min-height: 20vh;
+  padding-top: 4vh;
 }
