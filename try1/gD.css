@@ -3,6 +3,7 @@
   background-image: url('../img/hero.jpg');
   background-size: cover;
   background-position: right;
+  border-radius: 0px;
 }
 
 .vertical-center {
@@ -21,7 +22,10 @@
 }
 
 .foot {
-  margin-top: 8vh;
+  margin-top: 6vh;
   min-height: 20vh;
   padding-top: 4vh;
+}
+.btn {
+  border-radius: 2px;
 }
